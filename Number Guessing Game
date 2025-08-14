@@ -1,0 +1,32 @@
+const min = 1;
+const max = 100;
+const answer = Math.floor(Math.random() * (max - min + 1)) + min;
+
+let guess;
+let attempts = 0;
+
+alert(`🎯 Welcome to Number Guessing Game!\nGuess a number between ${min} and ${max}`);
+
+while (true) {
+  guess = parseInt(prompt("Enter your guess:"));
+  attempts++;
+
+  if (isNaN(guess)) {
+    alert("❌ Please enter a valid number!");
+    continue;
+  }
+
+  if (guess < min || guess > max) {
+    alert(`❌ Please enter a number between ${min} and ${max}`);
+    continue;
+  }
+
+  if (guess === answer) {
+    alert(`✅ Correct! The number was ${answer}.\nYou guessed it in ${attempts} tries.`);
+    break;
+  } else if (guess < answer) {
+    alert("📉 Too low! Try again.");
+  } else {
+    alert("📈 Too high! Try again.");
+  }
+}
